@@ -7,27 +7,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "omp.h"
+#include "include/terminal.h"
 
 int main(int argc, char *argv[])
 {
     int n = 0;
-    printf("[-] Enter value of n: ");
+    printf(RED "[-] Enter value of n: " RESET);
     scanf("%d", &n);
 
     int *a = (int *)malloc(n * sizeof(int));
     int *b = (int *)malloc(n * sizeof(int));
     int *c = (int *)malloc(n * sizeof(int));
 
-    printf("[+] Enter elements of vector a: ");
+    printf(YELLOW "[+] Enter elements of vector a: " RESET);
     for (int i = 0; i < n; i++) scanf("%d", &a[i]);
     
-    printf("[+] Enter elements of vector b: ");
+    printf(YELLOW "[+] Enter elements of vector b: " RESET);
     for (int i = 0; i < n; i++) scanf("%d", &b[i]);
 
     #pragma omp parallel for
     for (int i = 0; i < n; i++) c[i] = a[i] + b[i];
 
-    printf("[✓] Vector c is: ");
+    printf(BLUE "[✓] Vector c is: " RESET);
     for (int i = 0; i < n; i++) printf("%d ", c[i]);
 
     printf("\n");
