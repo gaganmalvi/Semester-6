@@ -15,4 +15,11 @@
 #define WHITE "\033[0;37m"
 #define RESET "\033[0m"
 
+// Macros for printing in color
+#define print_green(...) printf(GREEN __VA_ARGS__ RESET)
+#define print_red(...) printf(RED __VA_ARGS__ RESET)
+#define print_blue(...) printf(BLUE __VA_ARGS__ RESET)
+#define print_yellow(...) printf(YELLOW __VA_ARGS__ RESET)
+#define print_white(...) printf(WHITE __VA_ARGS__ RESET)
+
 #endif
