@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "omp.h"
-#include "include/terminal.h"
+#include "../include/terminal.h"
 
 int main(int argc, char *argv[])
 {
