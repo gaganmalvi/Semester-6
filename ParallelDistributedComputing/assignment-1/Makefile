@@ -30,3 +30,6 @@ vector-addition:
 all: 
 	make dot-product
 	make vector-addition
+
+clean:
+	rm -rf $(BINARIES_DIRECTORY)/*
