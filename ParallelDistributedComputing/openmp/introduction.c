@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     #pragma omp parallel
     {
         int nthreads = omp_get_num_threads();
-        int id = omp_get_thread_num();
+        int id = omp_get_thread_num() + 1;
         printf(RED "Hello World from thread " RESET BLUE "[%d] of [%d] \n" RESET, id, nthreads);
     }
 
