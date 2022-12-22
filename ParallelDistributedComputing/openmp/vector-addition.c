@@ -2,6 +2,7 @@
  * @file vector-addition.c
  * @author Gagan Malvi <malvi@aospa.co>
  * @brief Perform vector addition of two vectors using OpenMP
+ * @date 2022-12-21
  */
 
 #include <stdio.h>

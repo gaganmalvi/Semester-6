@@ -2,6 +2,7 @@
  * @file introduction.c
  * @author Gagan Malvi <malvi@aospa.co>
  * @brief Introduction to OpenMP
+ * @date 2022-12-22
  */
 
 #include <stdio.h>

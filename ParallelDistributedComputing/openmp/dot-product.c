@@ -2,6 +2,7 @@
  * @file dot-product.c
  * @author Gagan Malvi <malvi@aospa.co>
  * @brief Perform dot product of two vectors using OpenMP
+ * @date 2022-12-21
  */
 
 #include <stdio.h>

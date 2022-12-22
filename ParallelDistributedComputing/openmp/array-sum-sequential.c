@@ -2,6 +2,7 @@
  * @file array-sum-sequential.c
  * @author Gagan Malvi <malvi@aospa.co>
  * @brief Sequential sum of array elements, using OpenMP functions
+ * @date 2022-12-22
  */
 
 #include <stdio.h>

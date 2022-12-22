@@ -2,6 +2,7 @@
  * @file array-sum-parallel.c
  * @author Gagan Malvi <malvi@aospa.co>
  * @brief Parallel sum of array elements, using OpenMP functions
+ * @date 2022-12-22
  */
 
 #include <stdio.h>
