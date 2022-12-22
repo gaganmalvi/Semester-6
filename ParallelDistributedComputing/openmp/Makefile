@@ -40,6 +40,8 @@ all:
 	make dot-product
 	make vector-addition
 	make introduction
+	make array-sum-sequential
+	make array-sum-parallel
 
 clean:
 	rm -rf $(BINARIES_DIRECTORY)/*
