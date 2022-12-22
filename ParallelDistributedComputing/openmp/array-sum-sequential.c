@@ -14,14 +14,16 @@ int main(int argc, char *argv[])
     printf(BLUE "[-] " RESET RED "Enter the number of elements in the array: " RESET);
     scanf("%d", &n);
 
-    int *arr = (int *)malloc(n * sizeof(int));
+    long long int *arr = (long long int *)malloc(n * sizeof(long long int));
     printf(BLUE "[-] " RESET YELLOW "Enter the elements of the array: " RESET);
-    for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
+    for (int i = 0; i < n; i++) scanf("%lld", &arr[i]);
 
-    int sum = 0;
+    long long int sum = 0;
     for (int i = 0; i < n; i++) sum += arr[i];
 
-    printf(BLUE "[-] " RESET GREEN "Sum of the array elements: " RESET "%d\n", sum);
+    printf(BLUE "[-] " RESET GREEN "Sum of the array elements: " RESET "%lld\n", sum);
+
+    free(arr);
 
     return 0;
 }
