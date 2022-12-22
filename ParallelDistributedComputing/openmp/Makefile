@@ -30,6 +30,9 @@ dot-product:
 vector-addition:
 	gcc -o $(BINARIES_DIRECTORY)/vector-addition vector-addition.c $(OPENMP_CFLAGS) $(EXTRA_CFLAGS)
 
+array-sum-sequential: 
+	gcc -o $(BINARIES_DIRECTORY)/array-sum-sequential array-sum-sequential.c $(OPENMP_CFLAGS) $(EXTRA_CFLAGS)
+
 all: 
 	make dot-product
 	make vector-addition
