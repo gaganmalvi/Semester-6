@@ -1,0 +1,21 @@
+/**
+ * @file introduction.c
+ * @author Gagan Malvi <malvi@aospa.co>
+ * @brief Introduction to OpenMP
+ */
+
+#include <stdio.h>
+#include "omp.h"
+#include "../include/terminal.h"
+
+int main(int argc, char *argv[])
+{
+    #pragma omp parallel
+    {
+        int nthreads = omp_get_num_threads();
+        int id = omp_get_thread_num();
+        printf(RED "Hello World from thread " RESET BLUE "[%d] of [%d] \n" RESET, id, nthreads);
+    }
+
+    return 0;
+}

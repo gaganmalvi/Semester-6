@@ -21,6 +21,9 @@ EXTRA_CFLAGS := \
 	-Wno-missing-field-initializers \
 	-Wno-missing-braces
 
+introduction: 
+	gcc -o $(BINARIES_DIRECTORY)/introduction introduction.c $(OPENMP_CFLAGS) $(EXTRA_CFLAGS)
+
 dot-product:
 	gcc -o $(BINARIES_DIRECTORY)/dot-product dot-product.c $(OPENMP_CFLAGS) $(EXTRA_CFLAGS)
 
@@ -30,6 +33,7 @@ vector-addition:
 all: 
 	make dot-product
 	make vector-addition
+	make introduction
 
 clean:
 	rm -rf $(BINARIES_DIRECTORY)/*
