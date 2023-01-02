@@ -28,6 +28,8 @@ EXTRA_CFLAGS := \
 all: 
 	for program in $(PROGRAMS); do \
 		echo -e "\033[0;34m[-]\033[0m Building: \033[0;31m$$program...\033[0m" ; \
+		# if $(BINARIES_DIRECTORY) does not exist, create it. \
+		[ -d $(BINARIES_DIRECTORY) ] || mkdir $(BINARIES_DIRECTORY); \
 		$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $(OPENMP_CFLAGS) $$program -o $(BINARIES_DIRECTORY)/$${program%.*}; \
 	done
 
