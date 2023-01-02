@@ -3,7 +3,11 @@
 # Date: 2022-12-22
 #
 
+CC := gcc
 BINARIES_DIRECTORY := binaries
+PROGRAMS := $(wildcard *.c)
+
+# Flags to be passed to the C compiler.
 OPENMP_CFLAGS := -fopenmp
 EXTRA_CFLAGS := \
 	-O3 \
@@ -21,27 +25,10 @@ EXTRA_CFLAGS := \
 	-Wno-missing-field-initializers \
 	-Wno-missing-braces
 
-introduction: 
-	gcc -o $(BINARIES_DIRECTORY)/introduction introduction.c $(OPENMP_CFLAGS) $(EXTRA_CFLAGS)
-
-dot-product:
-	gcc -o $(BINARIES_DIRECTORY)/dot-product dot-product.c $(OPENMP_CFLAGS) $(EXTRA_CFLAGS)
-
-vector-addition:
-	gcc -o $(BINARIES_DIRECTORY)/vector-addition vector-addition.c $(OPENMP_CFLAGS) $(EXTRA_CFLAGS)
-
-array-sum-sequential: 
-	gcc -o $(BINARIES_DIRECTORY)/array-sum-sequential array-sum-sequential.c $(OPENMP_CFLAGS) $(EXTRA_CFLAGS)
-
-array-sum-parallel:
-	gcc -o $(BINARIES_DIRECTORY)/array-sum-parallel array-sum-parallel.c $(OPENMP_CFLAGS) $(EXTRA_CFLAGS)
-
 all: 
-	make dot-product
-	make vector-addition
-	make introduction
-	make array-sum-sequential
-	make array-sum-parallel
+	for program in $(PROGRAMS); do \
+		$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $(OPENMP_CFLAGS) $$program -o $(BINARIES_DIRECTORY)/$${program%.*}; \
+	done
 
 clean:
 	rm -rf $(BINARIES_DIRECTORY)/*
