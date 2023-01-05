@@ -6,12 +6,11 @@
  */
 
 #include <stdio.h>
-#include "omp.h"
 #include "../include/terminal.h"
+#include "omp.h"
 
-int main(int argc, char *argv[])
-{
-    #pragma omp parallel
+int main(int argc, char* argv[]) {
+#pragma omp parallel
     {
         int nthreads = omp_get_num_threads();
         int id = omp_get_thread_num() + 1;
