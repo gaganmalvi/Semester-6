@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
     scanf("%d", &n);
 
     long long int* arr = (long long int*)malloc(n * sizeof(long long int));
-    printf(BLUE "[-] " RESET YELLOW "Enter the elements of the array: " RESET);
+    printf(BLUE "[-] " RESET RED "Enter the elements of the array: " RESET);
     for (int i = 0; i < n; i++) scanf("%lld", &arr[i]);
 
     long long int sum = 0;

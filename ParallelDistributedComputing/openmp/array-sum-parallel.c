@@ -12,8 +12,10 @@
 
 int main(int argc, char* argv[]) {
     int n = 0;
-    printf(BLUE "[-] " RESET RED "Enter the number of elements in the array: " RESET);
+    printf(BLUE "[-] " RESET YELLOW "Enter the number of elements in the array: " RESET);
     scanf("%d", &n);
+
+    double time_1 = omp_get_wtime();
 
     long long int* arr = (long long int*)malloc(n * sizeof(long long int));
     printf(BLUE "[-] " RESET YELLOW "Enter the elements of the array: " RESET);
@@ -24,7 +26,10 @@ int main(int argc, char* argv[]) {
 #pragma omp parallel for default(shared) reduction(+ : sum)
     for (int i = 0; i < n; i++) sum += arr[i];
 
-    printf(BLUE "[-] " RESET GREEN "Sum of the array elements: " RESET "%lld\n", sum);
+    double time_2 = omp_get_wtime();
+
+    printf(BLUE "[-] " RESET GREEN "Sum of the array elements: " RESET "%lld\n", sum);    
+    printf(BLUE "[-] " RESET GREEN "Time taken: " RESET "%g\n", time_2 - time_1);
 
     free(arr);
 

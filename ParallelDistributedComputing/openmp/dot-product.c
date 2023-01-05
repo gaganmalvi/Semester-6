@@ -12,6 +12,9 @@
 
 int main(int argc, char* argv[]) {
     int n = 0;
+
+    double time_1 = omp_get_wtime();
+
     printf(GREEN "[-] Enter value of n: " RESET);
     scanf("%d", &n);
 
@@ -28,7 +31,10 @@ int main(int argc, char* argv[]) {
 #pragma omp parallel for reduction(+ : dot_product)
     for (int i = 0; i < n; i++) dot_product += a[i] * b[i];
 
+    double time_2 = omp_get_wtime();
+
     printf(BLUE "[✓] Dot product of vectors a and b is: %lld\n" RESET, dot_product);
+    printf(BLUE "[✓] Time taken: %g\n" RESET, time_2 - time_1);
 
     free(a);
     free(b);
