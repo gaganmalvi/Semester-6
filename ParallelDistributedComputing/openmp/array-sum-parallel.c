@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 
     long long int sum = 0;
 
-    #pragma omp parallel for reduction(+: sum)
+    #pragma omp parallel for default( shared ) reduction(+: sum)
     for (int i = 0; i < n; i++) sum += arr[i];
 
     printf(BLUE "[-] " RESET GREEN "Sum of the array elements: " RESET "%lld\n", sum);
