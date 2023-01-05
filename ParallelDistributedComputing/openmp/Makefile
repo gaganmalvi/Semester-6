@@ -10,22 +10,7 @@ PROGRAMS := $(wildcard *.c)
 # Flags to be passed to the C compiler.
 OPENMP_CFLAGS := -fopenmp
 X86_64_V3_CFLAGS += \
-	-mcx16 \
-	-msahf \
-	-mpopcnt \
-	-msse3 \
-	-msse4.1 \
-	-msse4.2 \
-	-mssse3 \
-	-mavx \
-	-mavx2 \
-	-mbmi \
-	-mbmi2 \
-	-mf16c \
-	-mfma \
-	-mlzcnt \
-	-mmovbe \
-	-mxsave
+	-march=x86-64-v3
 
 EXTRA_CFLAGS := \
 	-O3 \
