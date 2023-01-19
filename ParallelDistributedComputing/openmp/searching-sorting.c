@@ -42,19 +42,46 @@ void selection_sort_parallelized(long long int* arr, int n) {
     }
 }
 
-int linear_search(long long int* arr, int n, long long int key) {
-    int found = -1;
+void parallel_linear_search(long long int* arr, int n, long long int key) {
 #pragma omp parallel for
     for (int i = 0; i < n; i++)
-        if (arr[i] == key) found = i + 1;
-    return found;
+        if (arr[i] == key)
+            printf(BLUE "[✓] " RESET GREEN "Thread %d found element %lld at index %d\n" RESET,
+                   omp_get_thread_num(), key, i);
+}
+
+int binary_search_chunk(long long int* arr, long long int key, int start, int end) {
+    while (start <= end) {
+        int mid = start + (end - start) / 2;
+        if (arr[mid] == key) return mid;
+        if (arr[mid] < key)
+            start = mid + 1;
+        else
+            end = mid - 1;
+    }
+    return -1;
+}
+
+void parallel_binary_search(long long int* arr, long long int key, int size) {
+#pragma omp parallel
+    {
+        int id = omp_get_thread_num();
+        int num_threads = omp_get_num_threads();
+        int chunk_size = size / num_threads;
+        int start = id * chunk_size;
+        int end = (id == num_threads - 1) ? size - 1 : start + chunk_size - 1;
+        int index = binary_search_chunk(arr, key, start, end);
+        if (index != -1)
+            printf(BLUE "[✓] " RESET GREEN "Thread %d found element %lld at index %d\n" RESET, id,
+                   key, index);
+    }
 }
 
 int main() {
     int n = 0;
     double time_1 = 0, time_2 = 0;
     long long int key = 0;
-    
+
     printf(BLUE "[-] " RESET YELLOW "Enter number of elements in the array: " RESET);
     scanf("%d", &n);
 
@@ -79,15 +106,22 @@ int main() {
     scanf("%lld", &key);
 
     time_1 = omp_get_wtime();
-    int found = linear_search(arr, n, key);
+    parallel_linear_search(arr, n, key);
     time_2 = omp_get_wtime();
 
-    if (found == -1)
-        printf(BLUE "[✗] " RESET RED "Element not found\n" RESET);
-    else
-        printf(BLUE "[✓] " RESET GREEN "Element found at index %d\n" RESET, found);
+    printf(BLUE "[✓] " RESET GREEN "Time taken: %g\n" RESET, time_2 - time_1);
+
+    printf("\n");
+
+    printf(BLUE "[!] " RESET YELLOW "Binary Search\n" RESET);
+    printf(BLUE "[-] " RESET YELLOW "Enter the element to search for: " RESET);
+    scanf("%lld", &key);
+
+    time_1 = omp_get_wtime();
+    parallel_binary_search(arr, key, n);
+    time_2 = omp_get_wtime();
 
     printf(BLUE "[✓] " RESET GREEN "Time taken: %g\n" RESET, time_2 - time_1);
-    
+
     free(arr);
 }
