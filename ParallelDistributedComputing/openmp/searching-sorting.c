@@ -1,8 +1,7 @@
 /**
  * @file searching-sorting.c
  * @author Gagan Malvi <malvi@aospa.co>
- * @brief Searching in, and sorting of an array (parallelized) using OpenMP, using the n-ary search
- * algorithm
+ * @brief Searching in, and sorting of an array (parallelized) using OpenMP
  * @date 2023-01-19
  */
 
