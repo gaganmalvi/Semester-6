@@ -20,7 +20,7 @@ int main(int argc, char* argv[]) {
     for (int i = 0; i < n; i++) scanf("%lld", &arr[i]);
 
     long long int sum = 0;
-    
+
     double time_1 = omp_get_wtime();
 
 #pragma omp parallel for default(shared) reduction(+ : sum)
@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
 
     double time_2 = omp_get_wtime();
 
-    printf(BLUE "[-] " RESET GREEN "Sum of the array elements: " RESET "%lld\n", sum);    
+    printf(BLUE "[-] " RESET GREEN "Sum of the array elements: " RESET "%lld\n", sum);
     printf(BLUE "[-] " RESET GREEN "Time taken: " RESET "%g\n", time_2 - time_1);
 
     free(arr);
