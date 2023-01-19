@@ -6,8 +6,8 @@
  */
 
 #include <stdio.h>
-#include "omp.h"
 #include "../include/terminal.h"
+#include "omp.h"
 
 int main() {
     int thread_id = 0;
