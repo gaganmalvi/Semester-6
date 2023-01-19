@@ -5,10 +5,8 @@
  * @date 2023-01-19
  */
 
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include "../include/terminal.h"
 #include "omp.h"
 
