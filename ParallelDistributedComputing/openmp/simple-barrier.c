@@ -10,13 +10,12 @@
 #include "../include/terminal.h"
 
 int main() {
-#pragma omp parallel for
-    for (int i = 0; i < omp_get_max_threads(); i++) {
-        int thread_id = omp_get_thread_num();
-        if (thread_id == i) {
-            printf(BLUE "[-] " RESET GREEN "Thread %d is executing\n" RESET, thread_id);
-        }
-    }
+    int thread_id = 0;
+#pragma omp parallel private(thread_id)
+    {
+        thread_id = omp_get_thread_num();
+        printf(BLUE "[-] " RESET YELLOW "Thread %d is waiting at the barrier.\n" RESET, thread_id);
 #pragma omp barrier
-    return 0;
+        printf(BLUE "[✓] " RESET GREEN "Thread %d has passed the barrier.\n" RESET, thread_id);
+    }
 }
