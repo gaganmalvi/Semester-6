@@ -43,8 +43,8 @@ double compute_pi(int n, int threads) {
 #pragma omp for
         for (i = 0; i < n; i++) {
             // Generate random points
-            x = (double) drand48();
-            y = (double) drand48();
+            x = (double) rand() / (double) RAND_MAX;
+            y = (double) rand() / (double) RAND_MAX;
 
             // Calculate distance of a point from the origin
             distance = (x * x) + (y * y);
