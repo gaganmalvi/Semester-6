@@ -73,7 +73,7 @@ int main() {
     int threads = omp_get_max_threads();
 
     // Get the number of points to generate
-    printf("Enter the number of points to generate: ");
+    printf(BLUE "[-]" RESET RED " Enter the number of points to generate: " RESET);
     scanf("%d", &n);
 
     // Time the execution of the Monte Carlo method
@@ -86,10 +86,10 @@ int main() {
     double end = omp_get_wtime();
 
     // Print the estimated value of pi
-    printf("Estimated value of pi: %f\n", pi);
+    printf(BLUE "[-] " RESET GREEN "Estimated value of pi: %f\n" RESET, pi);
 
     // Print the time taken to compute pi
-    printf("Time taken to compute pi: %f seconds\n", end - start);
+    printf(BLUE "[-] " RESET GREEN "Time taken to compute pi: %f seconds\n" RESET, end - start);
 
     return 0;
 }
