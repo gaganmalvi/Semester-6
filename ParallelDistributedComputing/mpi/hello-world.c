@@ -7,8 +7,8 @@
 
 #include <stdio.h>
 
-#include "mpi.h"
 #include "../include/terminal.h"
+#include "mpi.h"
 
 int main() {
     int world_size = 0;
@@ -24,9 +24,11 @@ int main() {
     int name_len = 0;
     MPI_Get_processor_name(processor_name, &name_len);
 
-    printf(BLUE "[-] " RESET GREEN "Hello world from processor %s, rank %d out of %d processors\n" RESET, processor_name, world_rank, world_size);
+    printf(BLUE "[-] " RESET GREEN
+                "Hello world from processor %s, rank %d out of %d processors\n" RESET,
+           processor_name, world_rank, world_size);
 
     MPI_Finalize();
 
-    return 0; 
+    return 0;
 }
